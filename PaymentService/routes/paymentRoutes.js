@@ -6,4 +6,3 @@ router.post('/makePayment', paymentController.makePayment);
 router.get('/viewPayments', paymentController.viewPayments);
 
 module.exports = router;
-
