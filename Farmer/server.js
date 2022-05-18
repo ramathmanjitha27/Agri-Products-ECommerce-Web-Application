@@ -21,6 +21,9 @@ connection.once('open', () => {
     console.log('Mongodb Connection Success!');
 });
 
+const itemRoutes = require('./routes/itemRoutes')
+app.use('/items',itemRoutes);
+
 app.listen(PORT,()=>{
     console.log(`App is running on ${PORT}`);
 });
