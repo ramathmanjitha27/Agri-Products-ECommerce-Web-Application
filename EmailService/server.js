@@ -22,35 +22,41 @@ connection.once('open', () => {
 });
 
 
-// async function main() {
-//
-//     var transporter = await nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//             user: 'lyricson55@gmail.com',
-//             pass: '199919on'
-//         }
-//     });
-//
-//     var mailOptions = {
-//         from: 'lyricson55@gmail.com',
-//         to: 'subodalahiru68@gmail.com',
-//         subject: 'Sending Email using Node.js',
-//         text: 'That was easy!'
-//     };
-//
-//     await transporter.sendMail(mailOptions, function(error, info){
-//         if (error) {
-//             console.log("called from the error")
-//             console.log(error);
-//         } else {
-//             console.log('Email sent: ' + info.response);
-//         }
-//     });
-// }
-//
-//
-// main().then(() => console.log("successfully called"))
+async function main() {
+
+    let transporter = nodemailer.createTransport({
+        name: 'smtp.gmail.com',
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: "lyricson55@gmail.com", // generated ethereal user
+            pass: "199919on", // generated ethereal password
+        },
+        tls: {
+            rejectUnauthorized: false
+        },
+
+    });
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+        from: '"Agri products" <lyricson55@gmail.com>', // sender address
+        to: "subodalahiru68@gmail.com", // list of receivers
+        subject: "Hello ✔", // Subject line
+        // text: "Hello world?", // plain text body
+        html: "<b>Hello world? how are you</b>", // html body
+    });
+
+    console.log("Message sent: %s", info.messageId);
+
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+}
+
+
+main().then(() => console.log("successfully called"))
 
 
 
