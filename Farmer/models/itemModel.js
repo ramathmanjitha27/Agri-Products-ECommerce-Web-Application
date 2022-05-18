@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ItemSchema = new Schema({
     title: {
         type: String,
-        required: false
+        required: true
     },
     description: {
         type: String,
@@ -13,11 +13,13 @@ const ItemSchema = new Schema({
     price: {
         type: Number,
         required: true
-    }//,
-    // date_added: {
-    //     type: Date,
-    //     default: Date.now
-    // },
+    },
+    date_added: {
+        type: Date,
+        default: Date.now
+    },
 });
-const Item = mongoose.model('item',ItemSchema);
-module.exports = Item
+
+Item = mongoose.model('item',ItemSchema);
+
+module.exports = Item;
