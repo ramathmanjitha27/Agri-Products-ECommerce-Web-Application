@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 
 require('dotenv').config();
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 10000;
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -20,7 +20,7 @@ connection.once('open', () => {
     console.log('Mongodb Connection Success!');
 });
 
-// app.use('/api/creditCard', require('./routes/paymentRoutes'))
+app.use('/api/mobile', require('./routes/mobilePaymentRoutes'))
 
 
 app.listen(PORT,()=>{
