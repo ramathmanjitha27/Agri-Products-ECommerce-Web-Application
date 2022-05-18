@@ -21,67 +21,7 @@ connection.once('open', () => {
     console.log('Mongodb Connection Success!');
 });
 
-
-// async function main() {
-//
-//     var transporter = await nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//             user: 'lyricson55@gmail.com',
-//             pass: '199919on'
-//         }
-//     });
-//
-//     var mailOptions = {
-//         from: 'lyricson55@gmail.com',
-//         to: 'subodalahiru68@gmail.com',
-//         subject: 'Sending Email using Node.js',
-//         text: 'That was easy!'
-//     };
-//
-//     await transporter.sendMail(mailOptions, function(error, info){
-//         if (error) {
-//             console.log("called from the error")
-//             console.log(error);
-//         } else {
-//             console.log('Email sent: ' + info.response);
-//         }
-//     });
-// }
-//
-//
-// main().then(() => console.log("successfully called"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.use('/api/emailService', require('./routes/emailRoute'))
 
 app.listen(PORT,()=>{
     console.log(`App is running on ${PORT}`);
