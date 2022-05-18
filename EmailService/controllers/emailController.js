@@ -2,7 +2,15 @@ const express = require('express')
 const emailSchema = require('../modules/emailModule')
 const nodemailer = require("nodemailer");
 
+
+
 const confirmPayment = async (req, res) => {
+
+    const emailTemplate = `
+    <h3>Dear customer,</h3>
+    <h3 style="padding-top: -5px; margin-top: -5px">Please to enter the following code to confirm your payment</h3>
+    <h3 style="padding-bottom: -5px; margin-bottom: -5px">Code : <h1 style="background-color: aquamarine; padding: 5px; width: fit-content">${req.body.confirmationCode}</h1></h3>
+`
 
     async function main() {
         let transporter = nodemailer.createTransport({
@@ -21,11 +29,12 @@ const confirmPayment = async (req, res) => {
 
         // send mail with defined transport object
         let info = await transporter.sendMail({
-            from: '"Agri products" <process.env.SENT_EMAIL>', // sender address
+            from: '"Agri Products" <process.env.SENT_EMAIL>', // sender address
             to: req.body.customerEmailAddress, // list of receivers
-            subject: "Hello ✔", // Subject line
+            subject: "Payment Confirmation", // Subject line
             // text: "Hello world?", // plain text body
-            html: "<b>Hello world, this is from controller files</b>", // html body
+            // html: "<b>Hello world, this is from controller files</b>", // html body
+            html: emailTemplate
         });
 
         console.log("Message sent: %s", info.messageId);
