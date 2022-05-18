@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 const ItemSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: false
     },
     description: {
         type: String,
         required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: true
     }//,
     // date_added: {
