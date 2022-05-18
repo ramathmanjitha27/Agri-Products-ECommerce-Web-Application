@@ -20,8 +20,7 @@ connection.once('open', () => {
     console.log('Mongodb Connection Success!');
 });
 
-// app.use('/api/creditCard', require('./routes/paymentRoutes'))
-
+app.use('/api/SmsService', require('./routes/SmsRoutes'))
 
 app.listen(PORT,()=>{
     console.log(`App is running on ${PORT}`);
