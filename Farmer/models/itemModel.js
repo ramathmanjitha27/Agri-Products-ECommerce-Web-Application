@@ -11,13 +11,13 @@ const ItemSchema = new Schema({
         required: true
     },
     price: {
-        type: Number,
+        type: String,
         required: true
-    },
-    date_added: {
-        type: Date,
-        default: Date.now
-    },
+    }//,
+    // date_added: {
+    //     type: Date,
+    //     default: Date.now
+    // },
 });
-
-module.exports = Item = mongoose.model('item',ItemSchema);
+const Item = mongoose.model('item',ItemSchema);
+module.exports = Item

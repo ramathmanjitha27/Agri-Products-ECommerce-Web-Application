@@ -1,4 +1,4 @@
-const Item = require('../models/Item');
+const Item = require('../models/itemModel');
 
 module.exports.get_items = (req,res) => {
     Item.find().sort({date:-1}).then(items => res.json(items));
@@ -6,7 +6,7 @@ module.exports.get_items = (req,res) => {
 
 module.exports.post_item = (req,res) => {
     const newItem = new Item(req.body);
-    newItem.save().then(item => res.json(item));
+    newItem.save().then(item => res.json(newItem));
 }
 
 module.exports.update_item = (req,res) => {
