@@ -7,9 +7,9 @@ const nodemailer = require("nodemailer");
 const confirmPayment = async (req, res) => {
 
     const emailTemplate = `
-    <h2>With the email ${req.body.customerEmailAddress}  you have paid something from <b>Agri Products</b></h2>
-    <p>You need to enter the following code to confirm your payment</p>
-    <p>code : <h1 style="background-color: aquamarine; padding: 5px; width: fit-content">${req.body.confirmationCode}</h1></p>
+    <h3>Dear customer,</h3>
+    <h3 style="padding-top: -5px; margin-top: -5px">Please to enter the following code to confirm your payment</h3>
+    <h3 style="padding-bottom: -5px; margin-bottom: -5px">Code : <h1 style="background-color: aquamarine; padding: 5px; width: fit-content">${req.body.confirmationCode}</h1></h3>
 `
 
     async function main() {
