@@ -62,7 +62,7 @@ export default function Item(){
                         localStorage.setItem('price',price)
                         localStorage.setItem('description',description)
                     }
-
+                    //getItems
                     const getItems = () => {
                         axios.get("http://localhost:8080/item")
                             .then((getItems) => {
