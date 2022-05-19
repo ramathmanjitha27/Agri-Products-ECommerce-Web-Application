@@ -36,12 +36,12 @@ function Dashboard() {
     useEffect(() => {
         Axios.get("http://localhost:8000/item/")
             .then((res) => {
-                setItems(res.data)
-                console.log(res.data);
+                setItems(res.data.existingPost)
+                console.log(res.data.existingPost);
             })
     }, []);
 
-
+    console.log('items state', items);
 
     return (
         <div>
@@ -69,67 +69,65 @@ function Dashboard() {
             <i className='bx bx-search'></i>
         </div>
 
-        <div className="row">
-            <div className="col-12">
-                <div className="card">
-                    <div className="card__body">
-                        <table className="table">
-                            <thead className="thead-dark">
-                            <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">View</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {items
-                                .filter(item => {
-                                    if (search == "") {
-                                        return item
-                                    } else if (item.title.toLowerCase().includes(search.toLowerCase())) {
-                                        return item
-                                    }
-                                })
-                                .map((item) => {
+            <div className="row">
+                <div className="col-12">
+                    <div className="card">
+                        <div className="card__body">
+                            <table className="table">
+                                <thead className="thead-dark">
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">View</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {items
+                                    .filter((item) => {
+                                        if (search == "") {
+                                            return item
+                                        } else if (item.title.toLowerCase().includes(search.toLowerCase())) {
+                                            return item
+                                        }
+                                    })
+                                    .map((item) => {
 
-                                    const setItem = (item) => {
-                                        let {_id, title, price, description} = item;
-                                        console.log(_id);
-                                        localStorage.setItem('id', _id);
-                                        console.log(localStorage.getItem('ID'));
-                                        localStorage.setItem('title', title);
-                                        localStorage.setItem('price', price);
-                                        localStorage.setItem('description', description);
-                                    }
-                                    // ************ Change This ******************
-                                    const getItem = () => {
-                                        Axios.get("http://localhost:8000/item/")
-                                            .then((getItem) => {
-                                                setItems(getItem.data);
-                                            })
-                                    }
+                                        const setItem = (item) => {
+                                            let {_id, title, description, price, date_added} = item;
+                                            console.log(_id);
+                                            localStorage.setItem('id', _id);
+                                            console.log(localStorage.getItem('id'));
+                                            localStorage.setItem('title', title);
+                                            localStorage.setItem('description', description);
+                                            localStorage.setItem('price', price);
+                                            localStorage.setItem('date_added', date_added);
 
-                                    return (
-                                        <tr>
-                                            <td>{item.title}</td>
-                                            <td>{item.price}</td>
-                                            <td>{item.description}</td>
-                                            <td>
-                                                <Link to='/Cart'>
-                                                    <button className='btnIcon' onClick={() => setItem(item)}><i
-                                                        className='bx bx-edit'></i></button>
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
+                                        }
+
+                                        return (
+                                            <tr>
+                                                <td>{item.title}</td>
+                                                <td>{item.description}</td>
+                                                <td>{item.price}</td>
+                                                <td>
+                                                    <Link to='/'>
+                                                        <button className='btnIcon' onClick={() => setItem(item)}>
+                                                            {/*<i className='bx bx-edit'></i>*/}
+                                                            view
+                                                        </button>
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
 
         </div>
     )
