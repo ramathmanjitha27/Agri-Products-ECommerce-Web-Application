@@ -8,9 +8,8 @@ const dotenv = require('dotenv');
 
 require('dotenv').config();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7000;
 app.use(cors());
-app.use(express.json());
 // app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
@@ -22,12 +21,18 @@ connection.once('open', () => {
     console.log('Mongodb Connection Success!');
 });
 
-const ItemRoutes = require('./routes/itemRoutes');
-app.use('/item', ItemRoutes );
+const itemRoutes = require('./routes/itemRoutes')
+app.use('/items',itemRoutes);
 
 app.listen(PORT,()=>{
     console.log(`App is running on ${PORT}`);
 });
+
+//routes
+// const PostRoutes = require('./routes/posts');
+//
+// app.use('/post',PostRoutes);
+
 
 
 

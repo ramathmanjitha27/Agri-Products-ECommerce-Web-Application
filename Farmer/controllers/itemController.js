@@ -1,68 +1,24 @@
-const item = require('../models/itemModel')
-
-console.log('Item controller called')
+const Item = require('../models/itemModel');
 
 module.exports.get_items = (req,res) => {
-    item.find()
-        .then((items)=>{
-            res.json({success:true,existingPost:items});
-        })
-        .catch((err) =>{
-            console.log(err);
-        })
+    Item.find().sort({date:-1}).then(items => res.json(items));
 }
 
 module.exports.post_item = (req,res) => {
-    const title = req.body.title;
-    const description = req.body.description;
-    const price = req.body.price;
-
-    const newItem = new item( {
-        title,
-        description,
-        price
-    })
-
-    newItem.save()
-        .then(()=>{
-            res.json('Item Added')
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+    const newItem = new Item(req.body);
+    newItem.save().then(item => res.json(item));
 }
 
 module.exports.update_item = (req,res) => {
-    let itemID = req.params.id;
-    const {title, description, price} = req.body;
-
-    const updatePost = {
-        title,
-        description,
-        price
-    };
-
-    const update = item.findByIdAndUpdate(itemID,updatePost)
-        .then(()=>{
-            res.status(200).send({
-                status:'post updated'
-            });
-        }).catch((err)=>{
-            console.log(err);
-            res.status(200).send({status:'error with updating data', error:err.message});
-        })
+    Item.findByIdAndUpdate({_id: req.params.id},req.body).then(function(item){
+        Item.findOne({_id: req.params.id}).then(function(item){
+            res.json(item);
+        });
+    });
 }
 
 module.exports.delete_item = (req,res) => {
-    let itemID = req.params.id;
-    item.findByIdAndDelete(itemID)
-        .then(() => {
-            res.status(200).send({ status: 'item deleted' });
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res
-                .status(500)
-                .send({ status: 'Error with delete user', error: err.message });
-        });
+    Item.findByIdAndDelete({_id: req.params.id}).then(function(item){
+        res.json({success: true});
+    });
 }
