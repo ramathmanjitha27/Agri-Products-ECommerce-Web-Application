@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export default function cart(){
     return(
@@ -21,6 +22,10 @@ export default function cart(){
                     </tr>
                 </tbody>
             </table>
+
+            <Link to = "/checkoutItems">
+                Click to go to Checkout
+            </Link>
         </div>
     )
 }

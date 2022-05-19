@@ -1,0 +1,97 @@
+import React, {useState} from 'react';
+import {Button, Form, Tab, Tabs} from "react-bootstrap";
+
+const PaymentDataForm = ({email, amount}) => {
+
+    const [cardNumber, setCardNumber] = useState();
+    const [CVC_number, setCVC_number] = useState();
+    const [mobileNumber, setMobileNumber] = useState();
+    const [pinNumber, setPinNumber] = useState();
+
+    const onCreditEnter = () => {
+        console.log(email)
+        console.log(cardNumber)
+        console.log(amount)
+        console.log(CVC_number)
+
+    //    payment service
+    }
+
+    const onMobileEnter = () => {
+        console.log(email)
+        console.log(mobileNumber)
+        console.log(amount)
+        console.log(pinNumber)
+
+        //    payment service
+    }
+
+    return (
+
+            <span className="block-example border border-info p-2 m-2 " style={{borderRadius:"10px"}}>
+                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
+
+                    <Tab eventKey="home" title="Mobile Payment">
+                        <div style={{padding:"6px"}}>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Mobile number</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter mobile number..."
+                                                  onChange={(e) => setMobileNumber(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Label>Pin Number</Form.Label>
+                                    <Form.Control type="text" placeholder="Pin..."
+                                                  onChange={(e) => setPinNumber(e.target.value)}
+                                    />
+                                    <Form.Text className="text-muted">
+                                        Provided by the mobile service provider
+                                    </Form.Text>
+                                </Form.Group>
+                                <Button variant="primary" type="button"
+                                        onClick={onMobileEnter}
+                                >
+                                    Enter Details
+                                </Button>
+                            </Form>
+                        </div>
+                    </Tab>
+
+                    <Tab eventKey="profile" title="Credit Card">
+                        <div style={{padding:"6px"}}>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Credit card number</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter Credit cart number..."
+                                                  onChange={(e) => setCardNumber(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Label>CVC Number</Form.Label>
+                                    <Form.Control type="text" placeholder="CVC..."
+                                                  onChange={(e) => setCVC_number(e.target.value)}
+                                    />
+                                    <Form.Text className="text-muted">
+                                        Downside of the card
+                                    </Form.Text>
+                                </Form.Group>
+                                <Button variant="primary" type="button"
+                                        onClick={onCreditEnter}
+                                >
+                                    Enter Details
+                                </Button>
+                            </Form>
+                        </div>
+                    </Tab>
+
+                </Tabs>
+
+
+            </span>
+
+    )
+}
+export default PaymentDataForm;

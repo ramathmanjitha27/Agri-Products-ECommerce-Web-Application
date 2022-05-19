@@ -44,6 +44,7 @@ const confirmPayment = async (req, res) => {
 
     }
 
+
     main().then(() => console.log("successfully called"))
 
     try{
