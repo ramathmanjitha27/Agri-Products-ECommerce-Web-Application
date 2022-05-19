@@ -11,7 +11,6 @@ const confirmPayment = async (req, res) => {
     <h3 style="padding-top: -5px; margin-top: -5px">Please to enter the following code to confirm your payment</h3>
     <h3 style="padding-bottom: -5px; margin-bottom: -5px">Code : <h1 style="background-color: aquamarine; padding: 5px; width: fit-content">${req.body.confirmationCode}</h1></h3>
 `
-
     async function main() {
         let transporter = nodemailer.createTransport({
             name: 'smtp.gmail.com',
@@ -26,6 +25,7 @@ const confirmPayment = async (req, res) => {
                 rejectUnauthorized: false
             },
         });
+
 
         // send mail with defined transport object
         let info = await transporter.sendMail({
@@ -44,8 +44,8 @@ const confirmPayment = async (req, res) => {
 
     }
 
-    main().then(() => console.log("successfully called"))
 
+    main().then(() => console.log("successfully called"))
 
     try{
         const result = await emailSchema.create({
@@ -68,7 +68,7 @@ const viewConfirmEmail = async (req, res) => {
         const results = await emailSchema.find({email})
         res.status(200).json(results);
     }catch (err){
-        console.log("View mobile payment is not success")
+        console.log("View mobile payment on email is not success")
         res.status(500).json(err)
     }
 }

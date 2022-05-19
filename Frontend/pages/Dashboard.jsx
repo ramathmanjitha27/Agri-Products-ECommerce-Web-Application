@@ -15,8 +15,13 @@ function Dashboard() {
     const {user} = useSelector((state) => state.auth) //used to get the user
 
 
+
     const [items, setItems] = useState([]);
     const [search, setSearch] = useState("");
+
+    const [items, setItems] = useState([]);
+    const [search, setSearch] = useState("");
+
 
 
     const onLogout = () => {
@@ -24,7 +29,6 @@ function Dashboard() {
         dispatch(reset())
         navigate('/')
     }
-
 
 
     useEffect(() => {
@@ -61,6 +65,27 @@ function Dashboard() {
                 }}/>
                 <i className='bx bx-search'></i>
             </div>
+        <div>
+            {/* code below: if user (i.e. logged in), show name */}
+            <h1>Welcome {user && user.name}</h1>
+            <p>Buyer Dashboard</p>
+            <h2 className="page-header">
+                Agri Items
+            </h2>
+        </div>
+        <div>
+            <button className='btn' onClick={onLogout}>
+                {/*<FaSignOutAlt /> Logout*/}
+                Logout
+            </button>
+        </div>
+
+        <div className="topnav__search">
+            <input type="text" placeholder='Search By Title...' onChange={(e) => {
+                setSearch(e.target.value);
+            }}/>
+            <i className='bx bx-search'></i>
+        </div>
 
             <div className="row">
                 <div className="col-12">
@@ -120,8 +145,6 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
-
-
         </div>
     )
 
