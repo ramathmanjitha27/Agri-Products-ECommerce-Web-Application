@@ -13,9 +13,6 @@ const add_to_cart = async (req,res)=>{
         console.log(cart);
         let item = await Item.findById({_id:itemId});
         console.log("show items",item)
-        if(!item){
-            res.status(404).send('Item not found!')
-        }
         console.log(req.body.items)
 
         const price = item.price;

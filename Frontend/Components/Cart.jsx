@@ -7,7 +7,7 @@ export default function cart(){
     const [cartAll,setCartAll] = useState([])
     useEffect(()=>{
         const getCartItems = ()=>{
-        axios.get('http://localhost:8000/cart/6')
+        axios.get('http://localhost:8000/cart/4')
             .then((res) =>{
                 const all = res.data.bill;
                 const data = res.data.items;
