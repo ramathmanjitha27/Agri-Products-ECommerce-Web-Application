@@ -30,7 +30,7 @@ function Login() {
 
         if(isError) {
             // toast.error(message)
-            alert(message)
+            alert('Incorrect Login Details')
         }
 
         if(isSuccess || user){
