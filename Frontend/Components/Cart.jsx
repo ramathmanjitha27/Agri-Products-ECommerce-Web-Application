@@ -23,7 +23,7 @@ export default function cart(){
                 alert('Error retriving data!!')
             })
     }
-        getCartItems();
+    getCartItems();
     },[])
     return(
         <div className="container">
@@ -33,7 +33,6 @@ export default function cart(){
             <th>Name of product</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>Delete Item</th>
             </tr>
         </thead>
                 <tbody>
@@ -51,6 +50,7 @@ export default function cart(){
                     }
                     <h2>The total bill amount</h2>
                     <h5>Rs:{cartAll}</h5>
+                <button> Set the payments</button>
                 </tbody>
                 </table>
 

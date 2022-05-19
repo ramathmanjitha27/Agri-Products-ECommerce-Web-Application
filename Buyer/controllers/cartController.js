@@ -19,9 +19,9 @@ const add_to_cart = async (req,res)=>{
         console.log(req.body.items)
 
         const price = item.price;
-        const name = item.title;
+        const title = item.title;
         console.log(price);
-        console.log(name)
+        console.log(title)
         // const quantity = req.body.items.quantity;
 
         if(cart){
@@ -36,7 +36,7 @@ const add_to_cart = async (req,res)=>{
                 cart.items[itemIndex] = productItem;
             }
             else {
-                cart.items.push({ itemId, name, quantity, price });
+                cart.items.push({ itemId, title, quantity, price });
             }
             cart.bill += quantity*price;
             cart = await cart.save();
@@ -46,7 +46,7 @@ const add_to_cart = async (req,res)=>{
             // no cart exists, create one
             const newCart = await Cart.create({
                 userId,
-                items: [{ itemId, name, quantity, price }],
+                items: [{ itemId, title, quantity, price }],
                 bill: quantity*price
             });
             console.log("from newCart",newCart);
@@ -55,7 +55,7 @@ const add_to_cart = async (req,res)=>{
     }
     catch (err) {
         console.log(err);
-        res.status(500).send("Something went wrong");
+        res.status(500).send("Something wrong");
     }
 }
 
@@ -64,7 +64,7 @@ const get_cart_items = async (req,res)=>{
     try{
         let cart = await Cart.findOne({userId});
         console.log(cart);
-        if(cart && cart.items.length>0){
+        if(cart){
             res.send(cart);
         }
         else{
@@ -73,16 +73,9 @@ const get_cart_items = async (req,res)=>{
     }
     catch(err){
         console.log(err);
-        res.status(500).send("Something went wrong");
+        res.status(500).send("Something wrong");
     }
 }
-
-// const remove_item = async (req,res)=>{
-//     const userID = req.params.id
-//     const itemID = req.params.itemId
-//
-//
-// }
 
 module.exports = {
     add_to_cart,
