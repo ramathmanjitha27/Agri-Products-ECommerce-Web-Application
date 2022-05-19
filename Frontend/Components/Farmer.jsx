@@ -63,6 +63,22 @@ export default function Item(){
                         localStorage.setItem('description',description)
                     }
 
+                    const getItems = () => {
+                        axios.get("http://localhost:8080/item")
+                            .then((getItems) => {
+                                setItems(getItems.data.existingPost);
+                            })
+                    }
+
+                    const onDelete = (id) => {
+                        if (window.confirm("Are you want to delete  - "+item.title)){
+                            axios.delete("http://localhost:8080/item/" +id)
+                                .then(() => {
+                                    getItems();
+                                })
+                        }
+                    }
+
                     return (
                         <tr>
                             <td key={index}>{index+1}</td>
@@ -83,7 +99,7 @@ export default function Item(){
                         </td>
 
                          <td>
-                             <button onClick={()=>deleteItem(item)}>Delete</button>
+                             <button onClick={()=>onDelete(item._id)}>Delete</button>
                          </td>
 
                         </tr>

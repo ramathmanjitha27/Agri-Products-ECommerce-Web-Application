@@ -11,6 +11,6 @@ const router = express.Router();
 router.post('/',addItem);
 router.get('/',getItem);
 router.put('/:id', updateitem)
-router.put('/:id', deleteItem)
+router.delete('/:id', deleteItem)
 
 module.exports = router;
