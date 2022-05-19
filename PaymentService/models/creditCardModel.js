@@ -18,6 +18,10 @@ const creditCardSchema = new Schema({
             type: Number,
             required: true
         },
+        holderName:{
+            type:String,
+            required: true
+        }
     },
     {
         timestamps: true
