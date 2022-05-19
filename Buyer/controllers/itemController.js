@@ -1,3 +1,4 @@
+const express = require('express')
 const item = require('../models/itemModel')
 
 module.exports.get_items = (req,res) => {
@@ -16,7 +17,7 @@ module.exports.post_item = (req,res) => {
     const price = req.body.price;
 
     const newItem = new item( {
-      title,
+        title,
         description,
         price
     })
