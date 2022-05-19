@@ -5,6 +5,8 @@ import {BrowserRouter,Route,Routes} from "react-router-dom";
 import AddItemFarmer from "./Components/AddItemFarmer";
 import Farmer from "./Components/Farmer";
 import ViewItemFarmer from "./Components/ViewItemFarmer";
+import EditItemFarmer from "./Components/EditItemFarmer";
+
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -19,9 +21,11 @@ function App(){
                     <Route path="/FarmerHome" element ={<Farmer/>}/>
                     <Route path="/AddItem" element ={<AddItemFarmer/>}/>
                     <Route path="/viewitem/:id" element={<ViewItemFarmer/>}/>
+                    <Route path="/edititem/:id" element={<EditItemFarmer/>}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/" element={<Login/>}/>
                     <Route path="/dash" element={<Dashboard/>}/>
+
                 </Routes>
             </BrowserRouter>
 
