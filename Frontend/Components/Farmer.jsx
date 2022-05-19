@@ -9,7 +9,7 @@ export default function Item(){
 
     useEffect(() =>{
         function getItems(){
-            axios.get("http://localhost:8000/item").then((res) => {
+            axios.get("http://localhost:8080/item").then((res) => {
                 console.log(res.data);
                 setItems(res.data.existingPost);
             }).catch( (err) => {
@@ -59,12 +59,6 @@ export default function Item(){
                             <td>
                                 <Link to={'/viewitem/'+item._id}>
                                     <button onClick={()=>passItem(item)}>View</button>
-                                </Link>
-                            </td>
-
-                            <td>
-                                <Link to={'/AddQuantity/'+item._id}>
-                                <button onClick={()=>passItem(item)}>Add to Cart</button>
                                 </Link>
                             </td>
 

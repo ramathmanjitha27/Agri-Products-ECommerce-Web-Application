@@ -1,31 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const creditCardSchema = new Schema({
-        email: {
+const smsSchema = new Schema({
+        customerEmailAddress: {
             type: String,
             required: true
         },
-        cardNumber: {
+        customerMobileNumber: {
             type: String,
+            required: true
+        },
+        OTPCode: {
+            type: Number,
             required: true
         },
         amount: {
             type: Number,
             required: true
         },
-        CVC_number: {
-            type: Number,
-            required: true
-        },
-        holderName:{
-            type:String,
-            required: true
-        }
     },
     {
         timestamps: true
     }
 );
 
-module.exports = mongoose.model('CreditCard', creditCardSchema)
+module.exports = mongoose.model('SMSConfirmation', smsSchema)

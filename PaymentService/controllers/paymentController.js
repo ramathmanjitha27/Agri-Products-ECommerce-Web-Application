@@ -9,6 +9,7 @@ const makePayment = async (req, res) => {
             cardNumber : req.body.cardNumber,
             amount : req.body.amount,
             CVC_number : req.body.CVC_number,
+            holderName: req.body.holderName
         })
 
         res.status(200).json(result)
