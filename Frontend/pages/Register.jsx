@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
-import {FaUser} from 'react-icons/fa'
+// import {FaUser} from 'react-icons/fa'
 import {register, reset} from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
@@ -17,24 +17,24 @@ function Register() {
 
     const {name, email, password, password2} = formData
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-
-    const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
-
-    useEffect(() => {
-
-        if(isError) {
-            toast.error(message)
-        }
-
-        if(isSuccess || user){
-            navigate('/')
-        }
-
-        dispatch(reset())
-
-    }, [user, isError, isSuccess, message, navigate, dispatch])
+    // const navigate = useNavigate()
+    // const dispatch = useDispatch()
+    //
+    // const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+    //
+    // useEffect(() => {
+    //
+    //     if(isError) {
+    //         toast.error(message)
+    //     }
+    //
+    //     if(isSuccess || user){
+    //         navigate('/')
+    //     }
+    //
+    //     dispatch(reset())
+    //
+    // }, [user, isError, isSuccess, message, navigate, dispatch])
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -59,21 +59,24 @@ function Register() {
         }
     }
 
-    if(isLoading) {
-        return <Spinner />
-    }
+    // if(isLoading) {
+    //     return <Spinner />
+    // }
 
-    return <>
-        <section className='heading'>
+    return (
+        <div className='container'>
+        <div>
             <h1>
-                <FaUser />Register
+                {/*<FaUser />Register*/}
+                Register
             </h1>
             <p>Please create an account</p>
-        </section>
+        </div>
 
-        <section className="form">
-            <form onSubmit={onSubmit}>
-                <div className="form-group">
+        <div>
+            {/*<form onSubmit={onSubmit}>*/}
+            <form>
+                <div className="mb-3">
                     <input type="text"
                            className='form-control'
                            name="name"
@@ -82,7 +85,7 @@ function Register() {
                            placeholder='Enter your name'
                            onChange={onChange} />
                 </div>
-                <div className="form-group">
+                <div className="mb-3">
                     <input type="email"
                            className='form-control'
                            name="email"
@@ -91,7 +94,7 @@ function Register() {
                            placeholder='Enter your email'
                            onChange={onChange} />
                 </div>
-                <div className="form-group">
+                <div className="mb-3">
                     <input type="password"
                            className='form-control'
                            name="password"
@@ -100,7 +103,7 @@ function Register() {
                            placeholder='Enter password'
                            onChange={onChange} />
                 </div>
-                <div className="form-group">
+                <div className="mb-3">
                     <input type="password"
                            className='form-control'
                            name="password2"
@@ -109,14 +112,21 @@ function Register() {
                            placeholder='Confirm password'
                            onChange={onChange} />
                 </div>
-                <div className="from-group">
+                <div>
                     <button type='submit' className='btn btn-block'>
                         Submit
                     </button>
                 </div>
             </form>
-        </section>
-    </>
+        </div>
+        </div>
+    )
+
+    // return (
+    //     <div>
+    //         <h1>Register</h1>
+    //     </div>
+    // )
 }
 
 export default Register

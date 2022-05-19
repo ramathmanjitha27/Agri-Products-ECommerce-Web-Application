@@ -16,6 +16,12 @@
     "parcel": "^2.0.0-rc.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-router-dom": "^6.3.0"
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
+    "react-toastify": "^9.0.1"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "process": "^0.11.10"
   }
 }
