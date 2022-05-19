@@ -34,7 +34,7 @@ function Dashboard() {
 
 // ************* CHANGE THIS ***************
     useEffect(() => {
-        Axios.get("http://localhost:8070/current/view")
+        Axios.get("http://localhost:8000/item/")
             .then((res) => {
                 setItems(res.data)
                 console.log(res.data);
@@ -104,7 +104,7 @@ function Dashboard() {
                                     }
                                     // ************ Change This ******************
                                     const getItem = () => {
-                                        Axios.get("http://localhost:8070/current/view")
+                                        Axios.get("http://localhost:8000/item/")
                                             .then((getItem) => {
                                                 setItems(getItem.data);
                                             })
