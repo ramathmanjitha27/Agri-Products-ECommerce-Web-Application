@@ -25,7 +25,7 @@ const Payment = () => {
         const random = Math.floor(1000+Math.random()*(9999-1000))
         setRandomNumber(random)
 
-        // confirmEmail({customerEmailAddress:email, amount:totalAmount,confirmationCode:random}).then(()=>console.log("called"))
+        confirmEmail({customerEmailAddress:email, amount:totalAmount,confirmationCode:random}).then(()=>console.log("called"))
 
         //calling to sms service
     }
@@ -57,6 +57,8 @@ const Payment = () => {
         }
     }, [checkConfirmation])
 
+    console.log(username)
+
     return (
         <div>
             {
@@ -71,7 +73,7 @@ const Payment = () => {
                             {/*    <li className="list-group-item d-flex justify-content-center d-flex align-items-center" style={{height:"100px"}} >Rs. <b>{totalAmount} </b></li>*/}
                             {/*</ul>*/}
 
-                            <PaymentDataForm email = {email} amount = {totalAmount} />
+                            <PaymentDataForm email = {email} amount = {totalAmount} username = {username}/>
 
                             <button className="btn btn-primary" style={{marginTop: "10px"}}
                                     onClick={() => onPayClick()}

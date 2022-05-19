@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {Button, Form, Tab, Tabs} from "react-bootstrap";
+import {creditCardPayment, mobilePayment} from "./PaymentAPI";
 
-const PaymentDataForm = ({email, amount}) => {
+const PaymentDataForm = ({email, amount, username}) => {
 
     const [cardNumber, setCardNumber] = useState();
     const [CVC_number, setCVC_number] = useState();
@@ -13,8 +14,11 @@ const PaymentDataForm = ({email, amount}) => {
         console.log(cardNumber)
         console.log(amount)
         console.log(CVC_number)
+        console.log(username)
 
-    //    payment service
+        //payment service
+        creditCardPayment({email,cardNumber,amount,CVC_number, holderName: username}).then((res)=> console.log("Payment success"))
+
     }
 
     const onMobileEnter = () => {
@@ -23,7 +27,8 @@ const PaymentDataForm = ({email, amount}) => {
         console.log(amount)
         console.log(pinNumber)
 
-        //    payment service
+        //  mobile  payment service
+        mobilePayment({email, mobileNumber, pinNumber,amount }).then(() => console.log("Mobile payment success"))
     }
 
     return (

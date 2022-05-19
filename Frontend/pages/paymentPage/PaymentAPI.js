@@ -14,7 +14,19 @@ export const confirmSms = async (data) => {
 }
 
 //payment success
-export const paymentSuccess = async (data) => {
+// export const paymentSuccess = async (data) => {
+//     const response = await  axios.post('http://localhost:9000/api/creditCard/makePayment', data)
+//         .then((res) => console.log(res))
+// }
+
+//payment added using credit card
+export const creditCardPayment = async (data) => {
     const response = await  axios.post('http://localhost:9000/api/creditCard/makePayment', data)
+        .then((res) => console.log(res))
+}
+
+//payment added using mobile phone
+export const mobilePayment = async (data) => {
+    const response = await  axios.post('http://localhost:10000/api/mobile/makeMobilePayment', data)
         .then((res) => console.log(res))
 }
