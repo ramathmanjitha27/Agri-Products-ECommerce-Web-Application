@@ -60,14 +60,20 @@ const add_to_cart = async (req,res)=>{
 }
 
 const get_cart_items = async (req,res)=>{
-    const userID = req.params.id;
-
-    let cart = await Cart.findOne({userID})
-    if(cart){
-        res.send(cart);
+    const userId = req.params.id;
+    try{
+        let cart = await Cart.findOne({userId});
+        console.log(cart);
+        if(cart && cart.items.length>0){
+            res.send(cart);
+        }
+        else{
+            res.send(null);
+        }
     }
-    else{
-        res.send(null)
+    catch(err){
+        console.log(err);
+        res.status(500).send("Something went wrong");
     }
 }
 

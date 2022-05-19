@@ -46,7 +46,6 @@ const confirmPayment = async (req, res) => {
 
     main().then(() => console.log("successfully called"))
 
-
     try{
         const result = await emailSchema.create({
             customerEmailAddress: req.body.customerEmailAddress,
@@ -68,7 +67,7 @@ const viewConfirmEmail = async (req, res) => {
         const results = await emailSchema.find({email})
         res.status(200).json(results);
     }catch (err){
-        console.log("View mobile payment is not success")
+        console.log("View mobile payment on email is not success")
         res.status(500).json(err)
     }
 }
