@@ -21,7 +21,7 @@ export default function NavBar(){
                             <a className="nav-link" href="/Cart">Cart</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Disabled</a>
+                            <a className="nav-link" href="/FarmerHome">Farmer</a>
                         </li>
                     </ul>
                 </div>
