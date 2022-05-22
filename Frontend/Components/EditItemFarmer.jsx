@@ -72,12 +72,12 @@ export default function EditItemFarmer(){
                 <br/>
 
                 <center>
-                    <input type="submit"/>
+                    <input class="btn btn-success" type="submit"/>
                 </center>
 
                 <br/>
                 <Link to={'/FarmerHome'}>
-                    <button>Back</button>
+                    <button class="btn btn-secondary">Back</button>
                 </Link>
 
             </form>

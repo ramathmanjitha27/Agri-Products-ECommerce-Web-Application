@@ -61,14 +61,14 @@ export default function AddItemFarmer(){
                 <br/>
                 <br/>
                 <center>
-                    <input type="submit"/>
+                    <input class="btn btn-success" type="submit" />
                 </center>
 
             </form>
 
             <br/>
             <Link to={'/FarmerHome'}>
-                <button >Back</button>
+                <button class="btn btn-secondary" >Back</button>
             </Link>
         </div>
     )
