@@ -61,11 +61,8 @@ export default function AddItemFarmer(){
                 <br/>
                 <br/>
                 <center>
-
-                    <input class="btn btn-success" type="submit" />
-
                     <Link to={'/FarmerHome'}>
-                    <input type="submit" onClick={handleSubmit}/>
+                    <input type="submit" class="btn btn-success" onClick={handleSubmit}/>
                     </Link>
 
                 </center>
