@@ -52,9 +52,7 @@ export default function ViewItemFarmer(){
 
             </form>
             <br/><br/>
-            <Link to={'/FarmerHome'}>
-                <button class="btn btn-success">Add Cart</button>
-            </Link>
+
 
         </div>
     )
